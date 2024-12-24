@@ -53,8 +53,13 @@
     <script>
         let participants = Array.from({ length: 199 }, (_, i) => i + 2);
 
-        // No extra chances anymore
-        // participants = participants.concat(extraChances);
+      
+        const extraChancesCount = Math.floor(participants.length * 0.8 / 2); 
+        const extraChances = Array(extraChancesCount).fill(4).concat(
+            Array(extraChancesCount).fill(44)
+        );
+
+        participants = participants.concat(extraChances);
 
         function spinRoulette() {
             if (participants.length === 0) {
@@ -69,7 +74,7 @@
             participants = participants.filter((num) => num !== selectedParticipant);
 
             // Display the selected participant
-            document.getElementById('result').innerHTML = `Поздравляю, победитель #${selectedParticipant}!`;
+            document.getElementById('result').innerHTML = `Поздравляю, победителей  #${selectedParticipant}!`;
         }
     </script>
 </body>
